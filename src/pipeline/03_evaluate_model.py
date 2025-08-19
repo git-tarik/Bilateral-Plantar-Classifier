@@ -1,4 +1,6 @@
-# Save this file as: 03_evaluate_model.py
+# Bilateral-Plantar-Classifier — All rights reserved.
+# Copyright (c) 2025 <Your Name/Team>. See LICENSE.
+# NOTE: Do not commit human-subject data. See DATA_POLICY.md.
 
 import pandas as pd
 import numpy as np
@@ -115,4 +117,5 @@ def main():
     print(f"\nSUCCESS! All plots have been saved to the '{output_plot_dir}' folder.")
 
 if __name__ == "__main__":
+
     main()
