@@ -92,6 +92,7 @@ python src/02_train_modelrandom_forest.py
 
 # 6) Save evaluation figures (Confusion Matrix, Report Heatmap, Feature Importance, ROC)
 python src/03_evaluate_model.py
+```
 
 ## Protocol (for reviewers)
 
