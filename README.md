@@ -7,8 +7,6 @@
 ![python](https://img.shields.io/badge/Python-3.x-blue)
 ![ml](https://img.shields.io/badge/Model-Random%20Forest-0A7)
 
-> **Hardware note:** Implementation follows a shoeinsole-mounted FSR layout (4 sensors).
----
 
 ## What’s in this repo
 - `assets/` — non-identifying visuals (e.g., dataset snapshot)
@@ -21,6 +19,20 @@
 - **No raw participant data is published.**  
 - Public assets may include **static, non-identifying snapshots** only.  
 - Raw CSVs and metadata are stored privately; available to authorized reviewers on request.
+
+ ## Hardware Overview
+
+This build uses a sandal-mounted bilateral plantar-pressure layout with **four FSRs per foot** (three forefoot, one heel), read by an **Arduino Uno** and streamed to a laptop over USB for logging.
+
+- **Sensors (per foot):** FFR1–FFR3 (forefoot), HFR4 (heel)
+- **Interface:** Arduino Uno (analog inputs with fixed resistors as dividers)
+- **Host:** Laptop collects serial data; Python script logs to CSV (left/right pairs)
+- **Why sandal?** Faster fit, comfort, and consistent placement versus closed shoes
+
+<img src="assets/hardware_overview.png" width="760" alt="FSR sensors on sandal → Arduino Uno → Laptop data logging">
+
+*Fig: Sensing flow — FSRs → Arduino → Laptop.*
+
 
 **Representative dataset snapshot**
 
