@@ -33,6 +33,10 @@ This build uses a sandal-mounted bilateral plantar-pressure layout with **four F
 <img src="assets/hardware_overview.jpeg" width="760" alt="FSR sensors on sandal → Arduino Uno → Laptop data logging">
 
 *Fig: Sensing flow — FSRs → Arduino → Laptop.*
+<img src="assets/data_collection_ui_histogram.png" width="720" alt="Data-collection UI histogram and summary (non-identifying)">
+*Figure: Data-collection UI generated immediately after saving a 60-second trial. The left pane shows the heuristic summary (“Walking Type”, “Foot Walking Type”) and per-sensor means; the right pane is a bar chart of normalized FSR averages for FFR1–FFR3 (forefoot) and HFR4 (heel).*
+
+
 
 
 ## Representative dataset snapshot
