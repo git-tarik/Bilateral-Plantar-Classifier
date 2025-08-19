@@ -72,9 +72,26 @@ This build uses a sandal-mounted bilateral plantar-pressure layout with **four F
 - **Reproducible features**: cadence, gait asymmetry index, step-time stats (mean/std/CV) from bilateral signals.
 - **Ethical handling**: informed consent collected; data kept private; only derived summaries are shared.
 
-## Want to review full code/data?
-To request access (e.g., for an interview or committee review), please contact: mdtarikanvar.cuj@gmail.com .  
-A private repo with code and non-identifying artifacts is available on request.
+## Quickstart (local run)
+
+```bash
+# 1) Create & activate a Python env
+python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+# 2) Install dependencies
+pip install -r requirements.txt
+
+# 3) Place your private CSV pairs locally (not in repo), e.g.:
+#    gait_data/<subject>_left.csv  and  gait_data/<subject>_right.csv
+
+# 4) Build features (merges L/R, finds heel strikes, computes cadence/GAI/step-time)
+python src/01_create_features.py
+
+# 5) Train the Random Forest (stratified 70/30 split, random_state=42)
+python src/02_train_modelrandom_forest.py
+
+# 6) Save evaluation figures (Confusion Matrix, Report Heatmap, Feature Importance, ROC)
+python src/03_evaluate_model.py
 
 
 
