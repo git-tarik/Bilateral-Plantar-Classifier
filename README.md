@@ -29,7 +29,7 @@ This build uses a sandal-mounted bilateral plantar-pressure layout with **four F
 - **Host:** Laptop collects serial data; Python script logs to CSV (left/right pairs)
 - **Why sandal?** Faster fit, comfort, and consistent placement versus closed shoes
 
-<img src="assets/hardware_overview.png" width="760" alt="FSR sensors on sandal → Arduino Uno → Laptop data logging">
+<img src="assets/hardware_overview.jpeg" width="760" alt="FSR sensors on sandal → Arduino Uno → Laptop data logging">
 
 *Fig: Sensing flow — FSRs → Arduino → Laptop.*
 
