@@ -1,4 +1,7 @@
-# Save this file as: 01_create_features.py
+# Bilateral-Plantar-Classifier — All rights reserved.
+# Copyright (c) 2025 <Your Name/Team>. See LICENSE.
+# NOTE: Do not commit human-subject data. See DATA_POLICY.md.
+
 
 import pandas as pd
 import numpy as np
@@ -159,4 +162,5 @@ def main():
         print("Label distribution:\n", master_df['label'].value_counts())
 
 if __name__ == "__main__":
+
     main()
