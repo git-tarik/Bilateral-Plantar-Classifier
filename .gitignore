@@ -20,3 +20,5 @@ Thumbs.db
 # Models & artifacts (future)
 *.pkl
 *.joblib
+master_features_dataset.csv
+
