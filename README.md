@@ -9,12 +9,15 @@
 ![ml](https://img.shields.io/badge/Model-Random%20Forest-0A7)
 
 
+
 ## What’s in this repo
+- `src/pipeline/` — feature build, training, and evaluation scripts
 - `assets/` — non-identifying visuals (e.g., dataset snapshot)
 - `model_performance_plots/` — evaluation figures (confusion matrix, report heatmap, feature importance, ROC)
-- `reports/` — brief notes/results
+- `reports/` — paper/notes
 - `DATA_POLICY.md` — data handling notes
 - `LICENSE` — All rights reserved (no reuse without written permission)
+
 
 ## Data policy (human subjects)
 - **No raw participant data is published.**  
