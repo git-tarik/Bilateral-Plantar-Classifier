@@ -34,7 +34,7 @@ This build uses a sandal-mounted bilateral plantar-pressure layout with **four F
 *Fig: Sensing flow — FSRs → Arduino → Laptop.*
 
 
-**Representative dataset snapshot**
+## Representative dataset snapshot**
 
 <img src="assets/dataset_snapshot.png" width="720" alt="Dataset snapshot (non-identifying)">
 
