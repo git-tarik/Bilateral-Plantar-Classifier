@@ -1,4 +1,6 @@
-# Save this file as: 02_train_model.py
+# Bilateral-Plantar-Classifier — All rights reserved.
+# Copyright (c) 2025 <Your Name/Team>. See LICENSE.
+# NOTE: Do not commit human-subject data. See DATA_POLICY.md.
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -68,4 +70,5 @@ def main():
     plt.show()
 
 if __name__ == "__main__":
+
     main()
