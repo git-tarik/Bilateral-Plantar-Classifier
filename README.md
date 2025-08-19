@@ -5,7 +5,7 @@
 
 
 ![license](https://img.shields.io/badge/license-All%20rights%20reserved-lightgrey)
-![python](https://img.shields.io/badge/Python-3.x-blue)
+![python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![ml](https://img.shields.io/badge/Model-Random%20Forest-0A7)
 
 
