@@ -94,13 +94,14 @@ pip install -r requirements.txt
 #    gait_data/<subject>_left.csv  and  gait_data/<subject>_right.csv
 
 # 4) Build features (merges L/R, finds heel strikes, computes cadence/GAI/step-time)
-python src/01_create_features.py
+python src/pipeline/01_create_features.py
 
 # 5) Train the Random Forest (stratified 70/30 split, random_state=42)
-python src/02_train_modelrandom_forest.py
+python src/pipeline/02_train_modelrandom_forest.py
 
 # 6) Save evaluation figures (Confusion Matrix, Report Heatmap, Feature Importance, ROC)
-python src/03_evaluate_model.py
+python src/pipeline/03_evaluate_model.py
+
 ```
 
 ## Protocol (for reviewers)
