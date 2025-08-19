@@ -21,6 +21,17 @@
 - Public assets may include **static, non-identifying snapshots** only.  
 - Raw CSVs and metadata are stored privately; available to authorized reviewers on request.
 
+## Request data access / Contact
+
+This repo intentionally excludes human-subject raw data.  
+If you’d like to review a short de-identified sample or discuss the project:
+
+- Open a GitHub **Issue** titled “Access request” with your affiliation/purpose, or  
+- Email me at **<your.email@example.com>** (or message via your GitHub profile/LinkedIn).
+
+I’m happy to demo the full pipeline live (data capture → features → model → evaluation).
+
+
  ## Hardware Overview
 
 This build uses a sandal-mounted bilateral plantar-pressure layout with **four FSRs per foot** (three forefoot, one heel), read by an **Arduino Uno** and streamed to a laptop over USB for logging.
