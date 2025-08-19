@@ -99,7 +99,7 @@ python src/03_evaluate_model.py
 - Model: **RandomForest**, `n_estimators=100`, `class_weight='balanced'`
 - ROC positive class: **Normal**
 
-## Repository map
+
 
 
 ## Repository map
