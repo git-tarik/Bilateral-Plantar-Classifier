@@ -93,5 +93,23 @@ python src/02_train_modelrandom_forest.py
 # 6) Save evaluation figures (Confusion Matrix, Report Heatmap, Feature Importance, ROC)
 python src/03_evaluate_model.py
 
+## Protocol (for reviewers)
+
+- Split: **70/30 stratified**, `random_state=42`
+- Model: **RandomForest**, `n_estimators=100`, `class_weight='balanced'`
+- ROC positive class: **Normal**
+
+## Repository map
+
+
+## Repository map
+
+- `src/pipeline/00_gait_collect.py` — (Optional) Arduino → CSV logger GUI for 60s trials
+- `src/pipeline/01_create_features.py` — Merge L/R CSVs, detect heel strikes, compute cadence/GAI/step-time, write `master_features_dataset.csv`
+- `src/pipeline/02_train_modelrandom_forest.py` — Train Random Forest (70/30 stratified, `random_state=42`) and print metrics
+- `src/pipeline/03_evaluate_model.py` — Save plots (Confusion Matrix, Classification Report heatmap, Feature Importance, ROC) to `model_performance_plots/`
+- `reports/` — Paper/report materials
+- `assets/` — Images used in documentation
+- `model_performance_plots/` — Generated evaluation figures
 
 
