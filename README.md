@@ -72,7 +72,7 @@ This build uses a sandal-mounted bilateral plantar-pressure layout with **four F
 - **Ethical handling**: informed consent collected; data kept private; only derived summaries are shared.
 
 ## Want to review full code/data?
-To request access (e.g., for an interview or committee review), please contact: **mdtarikanvar.cuj@gmail.com .  
+To request access (e.g., for an interview or committee review), please contact: mdtarikanvar.cuj@gmail.com .  
 A private repo with code and non-identifying artifacts is available on request.
 
 
