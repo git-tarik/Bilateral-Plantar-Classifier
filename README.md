@@ -34,7 +34,7 @@ This build uses a sandal-mounted bilateral plantar-pressure layout with **four F
 *Fig: Sensing flow — FSRs → Arduino → Laptop.*
 
 
-## Representative dataset snapshot**
+## Representative dataset snapshot
 
 <img src="assets/dataset_snapshot.png" width="720" alt="Dataset snapshot (non-identifying)">
 
@@ -49,7 +49,7 @@ This build uses a sandal-mounted bilateral plantar-pressure layout with **four F
 | Normal (P/R/F1) | **0.95 / 1.00 / 0.97** |
 | ROC–AUC | **0.95** |
 
-**Evaluation figures**
+## Evaluation figures
 
 - Confusion Matrix  
   <img src="model_performance_plots/01_confusion_matrix.png" width="560" alt="Confusion Matrix">
