@@ -27,7 +27,7 @@ This repo intentionally excludes human-subject raw data.
 If you’d like to review a short de-identified sample or discuss the project:
 
 - Open a GitHub **Issue** titled “Access request” with your affiliation/purpose, or  
-- Email me at **<your.email@example.com>** (or message via your GitHub profile/LinkedIn).
+- Email me at mdtarikanvar.cuj@gmail.com or message via your https://www.linkedin.com/in/tarik-anvar/.
 
 I’m happy to demo the full pipeline live (data capture → features → model → evaluation).
 
