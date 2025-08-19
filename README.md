@@ -7,8 +7,7 @@
 ![python](https://img.shields.io/badge/Python-3.x-blue)
 ![ml](https://img.shields.io/badge/Model-Random%20Forest-0A7)
 
-> **Hardware note:** Implementation follows a sandal-mounted FSR layout (4 sensors/foot) inspired by a prior thesis; only hardware change vs. the thesis is **sandal instead of shoe**.
-
+> **Hardware note:** Implementation follows a shoeinsole-mounted FSR layout (4 sensors).
 ---
 
 ## What’s in this repo
