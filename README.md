@@ -114,6 +114,8 @@ python src/pipeline/02_train_modelrandom_forest.py
 python src/pipeline/03_evaluate_model.py
 
 ```
+**Tested environment:** Python 3.11 on Windows 10; also runs on Linux/macOS with `pip install -r requirements.txt`.
+
 
 ## Protocol (for reviewers)
 
