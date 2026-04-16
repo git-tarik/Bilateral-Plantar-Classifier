@@ -1,0 +1,2 @@
+Figure 5.3: Physical activity, walking speed, organization score, anxiety, stage phobia, and injury history distributions.
+Figure 5.4: Hypothesis-support plots including anxiety vs organization grouping and visible trait grouping.
