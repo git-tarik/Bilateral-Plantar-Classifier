@@ -1,0 +1,47 @@
+QUESTIONNAIRE OVERVIEW
+----------------------
+Total participants: 97
+
+Physical Activity Level (counts):
+Physical Activity Level
+Moderate     50
+Active       37
+Sedentary    10
+
+Usual walking speed (counts):
+How would you describe your usual walking speed?
+moderate    63
+fast        34
+
+Organisation / discipline scores (1–5):
+  Min:  1
+  Max:  5
+  Mean: 3.52
+  >= 3: 87 participants
+  <= 2: 10 participants
+
+Anxiety responses (normalized):
+Do you have anxiety related problem ? (normalized)
+no       68
+yes      24
+maybe     5
+
+Stage phobia responses (normalized):
+Do you have phobia of walking in stage? (normalized)
+no       80
+maybe     9
+yes       8
+
+Recent gait-altering injury responses (normalized):
+Have you had any injuries in the past year that altered your gait? (normalized)
+no     94
+yes     3
+
+Anxiety (yes/no/maybe) vs organisation category (>=3 vs <=2):
+org_high      <=2  >=3
+anxiety_norm          
+maybe           0    5
+no              0   68
+yes            10   14
+
+NOTE: At present this analysis only uses the questionnaire. To formally test the hypotheses about Normal vs Abnormal gait, a future step would merge these participants with the gait labels produced by the existing Random Forest classifier.

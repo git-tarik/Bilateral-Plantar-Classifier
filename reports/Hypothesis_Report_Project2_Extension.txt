@@ -1,0 +1,381 @@
+Bilateral Plantar-Pressure Gait Classifier – Project 2 Extension
+================================================================
+
+Section 1: Background
+---------------------
+
+In Project 1, we designed and implemented a low-cost bilateral plantar-pressure
+(BPP) gait classifier using sandal-mounted Force Sensitive Resistors (FSRs)
+placed under the forefoot and heel of each foot. Time-series pressure data,
+collected via an Arduino Uno and logged to a laptop, were converted into
+features such as cadence, step-time statistics and a gait asymmetry index.
+A Random Forest classifier trained on these features achieved high
+performance on a held-out test set, with overall accuracy around 96.5%,
+macro-averaged F1-score of approximately 0.96, and a ROC–AUC of about 0.95
+on the Normal vs Abnormal gait classification task.
+
+Because the classifier shows a strong confusion matrix (few misclassifications
+between the Normal and Abnormal classes), we can treat its predictions as a
+reasonable proxy for the underlying gait status of participants. In this
+second phase (Project 2), we extend the work beyond pure signal processing
+and machine learning to explore how psychological and behavioral factors
+relate to gait status, using a structured self-report questionnaire.
+
+
+Section 2: Questionnaire Overview
+---------------------------------
+
+A dedicated questionnaire (questionairre.csv) was administered to
+participants. It records demographic information (age, gender, occupation),
+physical activity level, personality traits, self-reported walking
+characteristics, and relevant psychological factors (e.g., anxiety,
+phobia of walking on stage, feelings in a crowd, injury history).
+
+Key fields include:
+
+- Physical Activity Level (Sedentary, Moderate, Active)
+- I am outgoing and sociable. (1–5 Likert scale)
+- I enjoy trying new things. (1–5)
+- I am highly organized and disciplined. (1–5)
+- I stay emotionally stable in most situations. (1–5)
+- I am empathetic and cooperative. (1–5)
+- How would you describe your usual walking speed? (moderate, fast)
+- Do you consciously change your walking style in public? (yes/no)
+- Have others ever commented on your walking style? (yes/no)
+- How much upper body movement do you have while walking? (minimal, moderate, a lot)
+- Do you walk more when feeling a specific emotion? (yes/no + emotion)
+- Do you believe your walking style reflects your personality? (yes/no)
+- Which personality trait is most visible in your walk? (free text, e.g. Confident, Nervous, Calm, Aggressive)
+- Do you modify your gait depending on social situations? (yes/no)
+- Have you ever analyzed or changed your walking style? (yes/no)
+- Do you have any medical conditions affecting your walk? (yes/no)
+- Do you have anxiety related problem? (yes/no/maybe)
+- Do you have phobia of walking in stage? (yes/no/maybe)
+- How do you feel when walking in Crowd? (free text)
+- Have you had any injuries in the past year that altered your gait? (yes/no)
+
+The questionnaire file currently contains data for 97 participants. A
+dedicated Python analysis script (src/tools/analyze_questionnaire.py)
+was implemented to compute descriptive statistics and derive a basic
+understanding of how these variables are distributed across the sample.
+
+
+Section 3: Descriptive Findings from the Questionnaire
+-----------------------------------------------------
+
+A short summary of key descriptive results (from questionnaire_analysis.txt):
+
+- Total participants: 97
+- Physical Activity Level distribution:
+  - Moderate: 50 participants
+  - Active:   37 participants
+  - Sedentary: 10 participants
+
+- Usual walking speed distribution:
+  - moderate: 63 participants
+  - fast:     34 participants
+
+- Organisation / discipline scores ("I am highly organized and disciplined."):
+  - Range: 1 (minimum) to 5 (maximum)
+  - Mean score: approximately 3.52
+  - Participants with score >= 3: 87
+  - Participants with score <= 2: 10
+
+- Anxiety-related problems (normalized yes/no/maybe):
+  - yes:   24 participants
+  - no:    68 participants
+  - maybe: 5 participants
+
+- Phobia of walking on stage (normalized yes/no/maybe):
+  - yes:   8 participants
+  - no:    80 participants
+  - maybe: 9 participants
+
+- Injuries in the last year that altered gait (normalized yes/no):
+  - yes: 3 participants
+  - no:  94 participants
+
+These descriptive statistics indicate that the sample is predominantly
+moderately or highly active, typically reports moderate walking speed,
+and tends to rate itself above the midpoint on organisation/discipline.
+A sizable minority reports anxiety-related problems, while stage phobia
+and recent gait-altering injury are less common.
+
+
+Section 4: Hypothesis Formulation
+---------------------------------
+
+The extension of the project is based on the integration of (a) the
+objective gait classifier from Project 1 and (b) the subjective
+questionnaire data from Project 2. Our goal is not merely to classify
+gait, but to explore how psychological and behavioral factors may be
+associated with abnormal gait patterns.
+
+Based on prior literature on anxiety, motor control and posture, and on
+intuition drawn from the questionnaire items, we formulate the following
+hypotheses:
+
+Hypothesis H1 – Anxiety and Abnormal Gait
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Participants who report having an anxiety-related problem are more
+likely to exhibit abnormal gait patterns than participants who do not
+report anxiety.
+
+Rationale: Anxiety is often associated with increased muscle tension,
+restlessness, and difficulty maintaining a relaxed, consistent walking
+pattern. This can manifest as irregular heel strikes, shorter or more
+variable steps, and increased gait asymmetry. When combined with the
+bilateral plantar-pressure metrics used in this project (e.g., step-time
+coefficient of variation, gait asymmetry index), anxious individuals are
+expected to deviate more from the "normal" pattern learned by the
+Random Forest classifier.
+
+
+Hypothesis H2 – Stage Phobia and Abnormal Gait
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Participants who report a phobia of walking on stage are more likely to
+show abnormal gait than those without such phobia.
+
+Rationale: A strong fear of being observed or judged while walking on a
+stage can lead to over-controlled, stiff and unnatural movements. Even
+in everyday walking situations, individuals with strong stage-related
+phobia may carry a tendency to tightly control their posture and
+step-taking pattern, resulting in altered pressure distributions and
+increased variability in step timing. We therefore expect a higher
+prevalence of classifier-labeled Abnormal gait among those who respond
+"yes" to the stage-phobia question.
+
+
+Hypothesis H3 – Organisation / Discipline and Normal Gait
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Participants who rate themselves as highly organized and disciplined
+(Likert score >= 3 on a 1–5 scale) are more likely to show normal, stable
+gait patterns, whereas those with lower scores (<= 2) are more likely to
+be classified as abnormal.
+
+Rationale: Self-discipline and organisation often reflect consistent
+routines, better self-care and adherence to physical activity habits.
+Such traits may indirectly promote more stable gait: more regular cadence,
+more symmetric loading between left and right feet, and lower variability
+in step timing. Since the questionnaire data indicate that 87 out of 97
+participants rate themselves at >= 3 on this item, the hypothesis focuses
+on whether the smaller, less-organized subset exhibits disproportionately
+more abnormal gait.
+
+
+Hypothesis H4 – Physical Activity Level and Gait Quality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sedentary participants are more likely to show abnormal gait patterns
+than moderately active or active participants.
+
+Rationale: Regular physical activity improves balance, muscular strength
+and neuromuscular control. In contrast, sedentary behavior is associated
+with weaker postural control and reduced endurance, factors that can
+increase gait variability or asymmetry. With 50 participants reporting
+moderate activity, 37 reporting active, and only 10 reporting sedentary
+lifestyles, we hypothesize that the sedentary group will show a higher
+fraction of Abnormal labels from the gait classifier.
+
+
+Hypothesis H5 – Visible Trait in Walk and Gait Stability
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Participants who describe their walk using positive traits such as
+"Confident", "Balanced", "Steady", "Athletic", "Purposeful" or similar
+terms are more likely to exhibit normal gait, whereas those who use
+terms such as "Nervous", "Anxious", "Rushed", "Jittery", "Frantic" or
+"Guarded" are more likely to exhibit abnormal gait.
+
+Rationale: The free-text field "Which personality trait is most visible
+in your walk?" serves as a self-assessment of the emotional tone and
+style of walking. We expect that participants who experience their walk
+as confident and steady will have more regular bilateral heel strikes
+and pressure distributions, while those who experience their walk as
+nervous, rushed or aggressive may display more variable or asymmetric
+patterns.
+
+
+Section 5: Proposed Evidence and Proof Strategy
+-----------------------------------------------
+
+To provide support for these hypotheses, it is not sufficient to rely
+only on conceptual flowcharts or narrative descriptions. Instead, we
+outline a practical, data-driven strategy that can be carried out using
+the existing resources of this project plus a minimal amount of
+additional annotation work.
+
+Step 1 – Treat the Random Forest Classifier as a Gait Labeler
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Project 1 already produced a Random Forest classifier that distinguishes
+Normal vs Abnormal gait using bilateral plantar-pressure features. Its
+performance on a held-out test set (accuracy ~96.5%, macro-F1 ~0.96,
+ROC–AUC ~0.95, and a confusion matrix with very few false positives or
+false negatives) demonstrates that it can be regarded as a reasonably
+reliable gait labeler.
+
+In the extended study, we regard the classifier's output as an estimate
+of each participant's true gait status. For each questionnaire
+participant who also completed a gait trial, we would assign a label of
+"Normal" or "Abnormal" based on the classifier.
+
+
+Step 2 – Merge Questionnaire Records with Gait Labels
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To jointly analyze psychological factors and gait status, we need a
+merged dataset that connects:
+
+- Questionnaire fields (anxiety, stage phobia, organisation score, activity
+  level, self-described trait, etc.), and
+- Gait label (Normal vs Abnormal) as determined by the Random Forest.
+
+This linkage can be created using a common identifier such as a
+participant ID, name plus timestamp, or trial file naming convention
+(e.g., "subjectID_left.csv" / "subjectID_right.csv"). The merged table
+would contain one row per participant with both psychological and gait
+information.
+
+
+Step 3 – Descriptive Cross-Tabulations for Each Hypothesis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For each hypothesis (H1–H5), we can construct simple cross-tabulation
+tables that relate questionnaire variables to gait labels. For example:
+
+- H1 (Anxiety):
+  - Build a 2x2 table of Anxiety (yes/no) vs Gait Label (Normal/Abnormal).
+  - Compute:
+    - The percentage of Abnormal among anxiety = yes.
+    - The percentage of Abnormal among anxiety = no.
+
+- H2 (Stage phobia):
+  - Similarly, construct a cross-tab of Stage Phobia (yes/no) vs Gait
+    Label (Normal/Abnormal).
+
+- H3 (Organisation):
+  - Categorize organisation scores into >= 3 vs <= 2.
+  - Cross-tab this against Gait Label.
+
+- H4 (Activity level):
+  - Cross-tab Physical Activity Level (Sedentary, Moderate, Active) vs
+    Gait Label.
+
+- H5 (Visible trait):
+  - Group free-text traits into two broad categories, such as
+    "Positive/Stable" (Confident, Balanced, Steady, Purposeful, Athletic,
+    etc.) and "Tense/Unstable" (Nervous, Anxious, Rushed, Frantic,
+    Aggressive, etc.), and cross-tab this category against Gait Label.
+
+Even before formal statistical testing, these tables—accompanied by
+clear percentages—provide initial quantitative evidence for or against
+each hypothesis.
+
+
+Step 4 – Simple Statistical Tests (Optional but Strong)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To move beyond descriptive comparisons and approach formal proof, the
+following basic statistical tests are recommended:
+
+1. Chi-square test of independence
+   - For each 2x2 (or small) cross-tab (e.g., Anxiety yes/no vs Normal/
+     Abnormal), perform a chi-square test to assess whether the observed
+     association is unlikely to be due to random chance.
+   - Report the chi-square statistic, degrees of freedom and p-value for
+     each hypothesis.
+
+2. Fisher's exact test
+   - For small cell counts (e.g., stage phobia yes has only a few
+     participants), Fisher's exact test can be more appropriate.
+
+3. Simple logistic regression (one predictor at a time)
+   - Fit a logistic regression model with Gait Label (Normal=0,
+     Abnormal=1) as the outcome and a single questionnaire predictor
+     (e.g., Anxiety yes/no) as the independent variable.
+   - The exponentiated coefficient gives an odds ratio: how many times
+     higher the odds of Abnormal gait are when anxiety = yes compared to
+     when anxiety = no. An odds ratio greater than 1 with a reasonably
+     narrow confidence interval supports H1.
+
+These statistical tests can be implemented with standard Python
+libraries (pandas, scipy, scikit-learn) and reported concisely in the
+results section.
+
+
+Section 6: Current Implementation Status
+----------------------------------------
+
+In the current repository state, the following components exist and are
+ready to support the extended analysis:
+
+- A trained Random Forest gait classifier and its evaluation figures
+  (confusion matrix, classification report heatmap, feature importance,
+  ROC curve) in the model_performance_plots/ directory.
+- A fully populated questionnaire file questionairre.csv with 97
+  responses.
+- A dedicated Python script src/tools/analyze_questionnaire.py that
+  reads the questionnaire, normalizes key yes/no fields, computes basic
+  distributions and writes them to reports/questionnaire_analysis.txt.
+
+What is intentionally not present in the public repository is the
+participant-level linkage between questionnaire responses and the gait
+classifier labels. This is consistent with the project's data policy,
+which avoids exposing potentially identifiable human-subject data.
+
+Therefore, in this extension report we primarily:
+
+1. Formulate clear, psychologically motivated hypotheses (H1–H5) that
+   connect anxiety, phobia, personality and activity level to gait
+   status.
+2. Provide descriptive statistics of the questionnaire responses to show
+   that the constructs of interest (anxiety, stage phobia, organisation,
+   activity level) are meaningfully represented in the sample.
+3. Outline a concrete, minimal analysis pipeline (cross-tabs, chi-square
+   tests, logistic regression) that can be applied to the private merged
+   dataset held by the project owner or supervising faculty.
+
+
+Section 7: Conclusion and Future Work
+-------------------------------------
+
+Project 1 established that low-cost bilateral plantar-pressure sensors,
+combined with carefully engineered features and a Random Forest
+classifier, can distinguish Normal and Abnormal gait with high accuracy.
+Project 2 extends this work conceptually by linking gait classification
+with psychological and behavioral factors, captured through a structured
+questionnaire.
+
+The hypotheses formulated here—relating anxiety, stage phobia,
+organisation/discipline, physical activity level, and self-perceived
+walking traits to gait status—are grounded both in the existing
+literature and in the information content of the questionnaire. While
+full statistical validation requires a private merged dataset that
+connects each questionnaire response with a classifier-derived gait
+label, the current analysis demonstrates that the questionnaire has
+sufficient variation and coverage to support such a study.
+
+In future work, once ethical approvals and data-linkage procedures are
+in place, the following steps can be completed:
+
+- Creation of a merged dataset of questionnaire + gait labels for each
+  participant.
+- Implementation of the cross-tabulation and statistical tests described
+  above to quantify support for H1–H5.
+- Exploration of more advanced models, such as a logistic regression or
+  Random Forest predicting gait status directly from psychological
+  variables, to identify which questionnaire items are most informative
+  about gait.
+- Possible expansion to multi-class labels (e.g., Normal, Mildly
+  Abnormal, Clearly Abnormal) or subtypes of abnormal gait, tied to
+  specific psychological profiles.
+
+Even in its current form, this extension provides a clear bridge between
+biomechanical gait analysis and psychological self-report, and offers a
+compelling direction for future interdisciplinary research at the
+intersection of wearable sensing, machine learning and behavioral
+science.
