@@ -139,14 +139,37 @@ The extension is organized around five hypotheses:
 
 The following figures are generated from `questionairre.csv` and support the Project 2 discussion:
 
-- [Physical activity level distribution](reports/project2_figures/01_physical_activity_level.png)
-- [Usual walking speed distribution](reports/project2_figures/02_walking_speed.png)
-- [Organization and discipline score distribution](reports/project2_figures/03_organization_score.png)
-- [Anxiety-related problem responses](reports/project2_figures/04_anxiety.png)
-- [Stage phobia responses](reports/project2_figures/05_stage_phobia.png)
-- [Recent gait-altering injury responses](reports/project2_figures/06_injury_history.png)
-- [Anxiety vs organization group](reports/project2_figures/07_anxiety_vs_organization.png)
-- [Visible trait in walk (grouped)](reports/project2_figures/08_visible_trait_group.png)
+<img src="reports/project2_figures/01_physical_activity_level.png" width="720" alt="Physical activity level distribution">
+
+*Figure: Physical activity level distribution among participants.*
+
+<img src="reports/project2_figures/02_walking_speed.png" width="720" alt="Usual walking speed distribution">
+
+*Figure: Usual walking speed distribution among participants.*
+
+<img src="reports/project2_figures/03_organization_score.png" width="720" alt="Organization and discipline score distribution">
+
+*Figure: Organization and discipline score distribution on the Likert scale.*
+
+<img src="reports/project2_figures/04_anxiety.png" width="720" alt="Anxiety-related problem responses">
+
+*Figure: Responses to the anxiety-related problem question.*
+
+<img src="reports/project2_figures/05_stage_phobia.png" width="720" alt="Stage phobia responses">
+
+*Figure: Responses to the stage phobia question.*
+
+<img src="reports/project2_figures/06_injury_history.png" width="720" alt="Recent gait-altering injury responses">
+
+*Figure: Responses to the recent gait-altering injury question.*
+
+<img src="reports/project2_figures/07_anxiety_vs_organization.png" width="720" alt="Anxiety vs organization group">
+
+*Figure: Comparison of anxiety responses across organization score groups.*
+
+<img src="reports/project2_figures/08_visible_trait_group.png" width="720" alt="Visible trait in walk grouped chart">
+
+*Figure: Grouped distribution of self-described visible traits in walking style.*
 
 ### Project 2 Scripts
 
